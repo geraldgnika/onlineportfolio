@@ -1,0 +1,123 @@
+<div *ngIf="authService.userObject && information && photoURL" class="py-5">
+  <div class="col-md-6 order-md-1 m-auto" style="padding-left: 40px; padding-right: 40px;">
+    <mat-card>
+      <mat-card-header>
+        <h2 class="mb-3">Update your information here</h2>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row mb-4">
+          <div class="col-md-4">
+            <div style="position: relative;">
+              <img [src]="photoURL.photoURL?? 'assets/images/profile.png'"
+                style="width: -webkit-fill-available; height: -webkit-fill-available; border-radius: 10px; margin-bottom: 0 !important; object-fit: cover;"
+                class="profileimage mb-4 img-thumbnail">
+              <button color="basic" mat-mini-fab (click)="inputField.click()"
+                style="position: absolute; bottom: 15px; left: 15px;">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </div>
+          </div>
+          <input #inputField type="file" hidden (change)="uploadFile($event, authService.userObject)">
+        </div>
+        <form class="needs-validation" [formGroup]="update_form" (ngSubmit)="update_info()" novalidate>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <mat-form-field appearance="legacy" style="width: -webkit-fill-available;">
+                <mat-label>Full Name</mat-label>
+                <input matInput placeholder="Full Name" type="text" formControlName="fullname"
+                  [(ngModel)]="information.fullname">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 mb-3">
+              <mat-form-field appearance="legacy" style="width: -webkit-fill-available;">
+                <mat-label>Email address</mat-label>
+                <input matInput placeholder="Email address" type="text" formControlName="email"
+                  [(ngModel)]="information.email">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <mat-form-field appearance="legacy" style="width: -webkit-fill-available;">
+                <mat-label>LinkedIn Link</mat-label>
+                <input matInput placeholder="LinkedIn Link" type="text" formControlName="linkedinlink"
+                  [(ngModel)]="information.linkedinlink">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 mb-3">
+              <mat-form-field appearance="legacy" style="width: -webkit-fill-available;">
+                <mat-label>C.V. Link</mat-label>
+                <input matInput placeholder="C.V. Link" type="text" formControlName="cvlink"
+                  [(ngModel)]="information.cvlink">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <mat-form-field appearance="legacy" style="width: -webkit-fill-available;">
+                <mat-label>Current Position</mat-label>
+                <input matInput placeholder="Current Position" type="text" formControlName="currentposition"
+                  [(ngModel)]="information.currentposition">
+              </mat-form-field>
+            </div>
+            <div class="col-md-6 mb-3">
+              <mat-form-field appearance="legacy" style="width: -webkit-fill-available;">
+                <mat-label>Current Institute</mat-label>
+                <input matInput placeholder="Current Institute" type="text" formControlName="currentinstitute"
+                  [(ngModel)]="information.currentinstitute">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 mb-3">
+              <label class="mb-2" style="font-weight: 500;" for="hello">Description</label>
+              <angular-editor id=" hello" placeholder="..." [config]="editorConfig" formControlName="hello" name="hello"
+                [(ngModel)]="information.hello"></angular-editor>
+              <div class="invalid-feedback">
+                Valid description is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 mb-3">
+              <label class="mb-2" style="font-weight: 500;" for="interests">My Interests</label>
+              <angular-editor id="interests" placeholder="..." [config]="editorConfig" formControlName="interests"
+                name="interests" [(ngModel)]="information.interests"></angular-editor>
+              <div class="invalid-feedback">
+                Valid my interests are required.
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 mb-3">
+              <label class="mb-2" style="font-weight: 500;" for="publicationsandpreprints">Publications and
+                Preprints</label>
+              <angular-editor id="publicationsandpreprints" placeholder="..." [config]="editorConfig"
+                formControlName="publicationsandpreprints" name="publicationsandpreprints"
+                [(ngModel)]="information.publicationsandpreprints"></angular-editor>
+              <div class="invalid-feedback">
+                Valid publications and preprints are required.
+              </div>
+            </div>
+          </div>
+
+          <hr class="mt-0">
+
+          <div class="d-flex mt-2">
+            <div class="col-md-6" style="margin-right: auto;">
+              <button mat-raised-button color="primary" type="submit">Update information</button>
+            </div>
+            <div class="col-md-6">
+              <button mat-raised-button (click)="goBack()" style="float: right;">Go back</button>
+            </div>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

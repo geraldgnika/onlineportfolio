@@ -1,0 +1,25 @@
+<div class="album py-5" *ngIf="blog && userData">
+  <div class="container">
+    <div class="col-md-8 order-md-1 m-auto" style="padding-left: 40px; padding-right: 40px;">
+      <div class="row blogrow">
+        <mat-card class="col-md-12"
+          style="border-radius: 10px; padding-top: 20px; padding-bottom: 30px; padding-left: 26px; padding-right: 26px;">
+          <mat-card-content>
+            <h1 [innerHTML]="blog.title" style="margin-bottom: 5px; word-wrap: break-word; text-align: justify;"></h1>
+            <p [innerHTML]="blog.content" style="word-wrap: break-word; text-align: justify; overflow: hidden;"></p>
+            <div class="d-flex">
+              <button mat-raised-button (click)="goBack()" style="margin-top: 10px; margin-right: auto;">Go
+                back</button>
+              <div *ngIf="authService.is_signed_in">
+                <button mat-raised-button color="primary" (click)="update_blog(blog.id)"
+                  style="margin-top: 10px; margin-right: 10px;">Update</button>
+                <button mat-raised-button color="warn" (click)="delete_blog(blog.id)"
+                  style="margin-top: 10px;">Delete</button>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

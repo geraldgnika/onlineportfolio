@@ -1,0 +1,41 @@
+<div *ngIf="authService.userObject && blog" class="py-5">
+  <div class="col-md-6 order-md-1 m-auto" style="padding-left: 40px; padding-right: 40px;">
+    <mat-card>
+      <mat-card-header>
+        <h2 class="mb-3">Update your writing here</h2>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="update_form" (ngSubmit)="update_blog()" novalidate>
+          <div class="row">
+            <div class="col-md-12 mb-3">
+              <mat-form-field appearance="legacy" style="width: -webkit-fill-available;">
+                <mat-label>Title</mat-label>
+                <input matInput placeholder="Title" type="text" id="title" name="title" formControlName="title"
+                  [(ngModel)]="blog.title">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 mb-3">
+              <label class="mb-2" style="font-weight: 500;" for="content">Content</label>
+              <angular-editor id="content" placeholder="..." [config]="editorConfig" id="content"
+                formControlName="content" name="content" name="content" [(ngModel)]="blog.content"></angular-editor>
+            </div>
+          </div>
+
+          <hr class="mt-0">
+
+          <div class="d-flex mt-2">
+            <div class="col-md-6" style="margin-right: auto;">
+              <button mat-raised-button color="primary" type="submit">Update writing</button>
+            </div>
+            <div class="col-md-6">
+              <button mat-raised-button (click)="goBack()" style="float: right;">Go back</button>
+            </div>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
