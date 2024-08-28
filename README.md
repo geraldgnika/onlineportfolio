@@ -1,1 +1,3 @@
-OnlinePortfolio is an online portfolio website I built using Angular and Firebase, where you can upload and edit your portfolio information.
+# OnlinePortfolio
+
+An online portfolio website I developed and deployed in Angular + Google Firebase.
