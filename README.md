@@ -22,6 +22,9 @@ An online portfolio website I developed and deployed in Angular + Google Firebas
 - Angular CLI
 - Modern web browser
 
+## Getting Started
+To get a local copy up and running, follow these steps:
+
 ## Running the Application
 To run this application locally, follow these steps:
 
